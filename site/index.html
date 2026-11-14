@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#163242">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="میز پرونده‌ها">
+<meta name="application-name" content="میز پرونده‌ها">
+<meta name="description" content="فضای کاری شخصی و قفل‌شده">
+<meta name="format-detection" content="telephone=no">
+<title>میز پرونده‌ها</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+@font-face{
+  font-family:Vazirmatn;
+  src:local("Vazirmatn"),local("Vazirmatn RD"),local("Vazirmatn FD"),local("Vazirmatn Regular");
+  font-weight:100 900;
+  font-display:swap;
+}
+:root{
+  --navy:#163242;
+  --navy-2:#1e4254;
+  --cream:#f7f3eb;
+  --cream-2:#efe8db;
+  --card:#fffcf7;
+  --ink:#132833;
+  --muted:#5a6d76;
+  --gold:#a6854a;
+  --gold-2:#c4a574;
+  --gold-bg:#f6edd6;
+  --danger:#9b1c1c;
+  --danger-bg:#fdecec;
+  --shadow:0 1px 2px rgba(22,50,66,.06),0 18px 48px rgba(22,50,66,.12);
+  --safe-t:env(safe-area-inset-top,0px);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-l:env(safe-area-inset-left,0px);
+  --safe-r:env(safe-area-inset-right,0px);
+  --font:Vazirmatn,Tahoma,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;min-height:100%;background:var(--navy);color:var(--ink);font-family:var(--font)}
+body{
+  min-height:100dvh;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(196,165,116,.28), transparent 55%),
+    linear-gradient(180deg, #163242 0%, #1a3a4c 42%, #f7f3eb 42%, #f7f3eb 100%);
+  padding:calc(28px + var(--safe-t)) calc(20px + var(--safe-r)) calc(24px + var(--safe-b)) calc(20px + var(--safe-l));
+}
+.wrap{
+  width:100%;
+  max-width:420px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+}
+.mark{
+  width:88px;height:88px;
+  border-radius:22px;
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  display:block;
+  background:#163242;
+}
+.ltr{direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.brand{text-align:center;color:#f7f3eb;margin-top:-4px}
+.brand h1{
+  margin:0 0 6px;
+  font-size:1.35rem;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.4;
+}
+.brand p{
+  margin:0;
+  font-size:.9rem;
+  color:rgba(247,243,235,.78);
+  line-height:1.7;
+}
+.card{
+  width:100%;
+  background:var(--card);
+  border-radius:20px;
+  padding:22px 20px 20px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(166,133,74,.22);
+}
+.card h2{
+  margin:0 0 4px;
+  font-size:1.02rem;
+  font-weight:800;
+  color:var(--navy);
+}
+.hint{
+  margin:0 0 16px;
+  font-size:.85rem;
+  color:var(--muted);
+  line-height:1.75;
+}
+label.sr{
+  position:absolute;
+  width:1px;height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+}
+.field{position:relative}
+input[type=password],input[type=text]{
+  width:100%;
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.5;
+  color:var(--ink);
+  background:var(--cream);
+  border:1.5px solid rgba(22,50,66,.14);
+  border-radius:14px;
+  padding:12px 14px;
+  min-height:48px;
+  outline:none;
+  direction:ltr;
+  text-align:center;
+  letter-spacing:.12em;
+}
+input:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(166,133,74,.35);
+  background:#fff;
+}
+.btn{
+  margin-top:12px;
+  width:100%;
+  min-height:48px;
+  border:0;
+  border-radius:14px;
+  cursor:pointer;
+  font-family:var(--font);
+  font-size:16px;
+  font-weight:800;
+  color:#fff;
+  background:linear-gradient(180deg,#1e4254,#163242);
+  box-shadow:0 8px 20px rgba(22,50,66,.22);
+}
+.btn[disabled]{opacity:.62;cursor:wait}
+.btn:not([disabled]):active{transform:translateY(1px)}
+.msg{
+  min-height:1.6em;
+  margin:12px 0 0;
+  font-size:.86rem;
+  line-height:1.65;
+  text-align:center;
+  color:var(--muted);
+}
+.msg.err{
+  color:var(--danger);
+  background:var(--danger-bg);
+  border-radius:10px;
+  padding:8px 10px;
+}
+.msg.ok{color:var(--navy)}
+.foot{
+  text-align:center;
+  font-size:.78rem;
+  color:#5a6d76;
+  line-height:1.8;
+  max-width:34rem;
+}
+.foot strong{color:var(--navy)}
+noscript p{
+  color:#fff;
+  text-align:center;
+  background:#9b1c1c;
+  padding:10px 14px;
+  border-radius:10px;
+}
+@media (prefers-reduced-motion:reduce){
+  .btn{transition:none}
+}
+</style>
+</head>
+<body>
+  <noscript><p>برای گشودن این صفحه باید جاوااسکریپت فعال باشد.</p></noscript>
+  <div class="wrap">
+    <img class="mark" src="icons/icon-192.png" width="88" height="88" alt="">
+    <div class="brand">
+      <h1>میز پرونده‌ها</h1>
+      <p>فضای کاری شخصی و قفل‌شده</p>
+    </div>
+    <form class="card" id="unlock-form" autocomplete="off" novalidate>
+      <h2>ورود</h2>
+      <p class="hint">برای مشاهدهٔ محتوا، رمز عبور را وارد کنید.</p>
+      <label class="sr" for="pass">رمز عبور</label>
+      <div class="field">
+        <input id="pass" name="pass" type="password" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="128" required>
+      </div>
+      <button class="btn" id="go" type="submit">گشودن</button>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+    </form>
+    <p class="foot">برای نصب روی آیفون، این صفحه را در Safari باز کنید و از منوی Share گزینهٔ زیر را بزنید:<br><span class="ltr">Add to Home Screen</span></p>
+  </div>
+<script>
+(function(){
+  const ITER_MIN = 600000;
+  const $ = id => document.getElementById(id);
+  const passEl = $('pass');
+  const btn = $('go');
+  const msg = $('msg');
+  let fails = 0;
+  let busy = false;
+  let payload = null;
+
+  function setMsg(text, kind){
+    msg.textContent = text || '';
+    msg.className = 'msg' + (kind ? ' ' + kind : '');
+  }
+  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+  function delayFor(n){
+    if (n <= 0) return 0;
+    return Math.min(16000, 1000 * Math.pow(2, n - 1));
+  }
+  function b64(s){
+    const bin = atob(s);
+    const u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return u;
+  }
+  async function deriveKey(pass, salt, iterations){
+    const enc = new TextEncoder();
+    const material = await crypto.subtle.importKey('raw', enc.encode(pass), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations, hash: 'SHA-256' },
+      material,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt']
+    );
+  }
+  async function decrypt(pass, data){
+    if (!data || data.cipher !== 'AES-256-GCM' || data.kdf !== 'PBKDF2-SHA256') {
+      throw new Error('format');
+    }
+    const iterations = data.iter | 0;
+    if (iterations < ITER_MIN) throw new Error('format');
+    const salt = b64(data.salt);
+    const iv = b64(data.iv);
+    const ct = b64(data.ct);
+    if (salt.length !== 16 || iv.length !== 12 || !ct.length) throw new Error('format');
+    const key = await deriveKey(pass, salt, iterations);
+    const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+    return new TextDecoder().decode(pt);
+  }
+  async function loadPayload(){
+    if (payload) return payload;
+    const res = await fetch('data.enc.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('network');
+    payload = await res.json();
+    return payload;
+  }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(function(){});
+  }
+  $('unlock-form').addEventListener('submit', async function(e){
+    e.preventDefault();
+    if (busy) return;
+    const pass = passEl.value;
+    if (!pass) { setMsg('رمز عبور را وارد کنید.', 'err'); passEl.focus(); return; }
+    busy = true;
+    btn.disabled = true;
+    const wait = delayFor(fails);
+    if (wait) {
+      setMsg('لطفاً ' + wait / 1000 + ' ثانیه صبر کنید…', '');
+      await sleep(wait);
+    }
+    setMsg('در حال گشودن…', 'ok');
+    try {
+      const data = await loadPayload();
+      const html = await decrypt(pass, data);
+      if (!html || html.indexOf('<') === -1) throw new Error('format');
+      document.open();
+      document.write(html);
+      document.close();
+      return;
+    } catch (err) {
+      fails += 1;
+      const net = err && err.message === 'network';
+      setMsg(net
+        ? 'بارگذاری دادهٔ رمزشده ممکن نشد. اتصال را بررسی کنید.'
+        : 'رمز نادرست است. دوباره تلاش کنید.',
+      'err');
+      passEl.focus();
+      passEl.select();
+    } finally {
+      busy = false;
+      btn.disabled = false;
+    }
+  });
+  passEl.focus();
+})();
+</script>
+</body>
+</html>
